@@ -7,9 +7,15 @@ const {withNativeWind} = require('nativewind/metro');
  *
  * @type {import('metro-config').MetroConfig}
  */
-const config = {};
+const config = mergeConfig(getDefaultConfig(__dirname), {
+  // transformer: {
+  //   getTransformOptions: async () => ({
+  //     transform: {
+  //       experimentalImportSupport: false,
+  //       inlineRequires: true,
+  //     },
+  //   }),
+  // },
+});
 
-module.exports = withNativeWind(
-  mergeConfig(getDefaultConfig(__dirname), config),
-  {input: './global.css'},
-);
+module.exports = withNativeWind(config, {input: './global.css'});
